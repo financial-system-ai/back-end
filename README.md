@@ -12,7 +12,7 @@ Este projeto tem como objetivo permitir a consulta de dados financeiros por meio
 
 - **Azure AI Speech** para o reconhecimento e para síntese de fala.
 - **Chat-GPT / AZURE** para tratamento do texto.
-- **Backend** : Java, Docker, PostgreSQL.
+- **Backend** : Java, Docker, Mysql.
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
