@@ -1,8 +1,8 @@
 package br.project.financial.repositories.transaction;
 
-import br.project.financial.dtos.transaction.output.TransactionRevenueDTO;
-import br.project.financial.dtos.transaction.output.BranchTransactionRevenueDTO;
-import br.project.financial.dtos.transaction.output.BranchAmountDTO;
+import br.project.financial.dtos.transaction.output.TransactionRevenueOutputDTO;
+import br.project.financial.dtos.transaction.output.BranchTransactionRevenueOutputDTO;
+import br.project.financial.dtos.transaction.output.BranchAmountOutputDTO;
 import br.project.financial.entities.Transaction;
 import br.project.financial.enums.TransactionType;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +17,7 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
     @Query("""
-                SELECT new br.project.financial.dtos.transaction.output.TransactionRevenueDTO(
+                SELECT new br.project.financial.dtos.transaction.output.TransactionRevenueOutputDTO(
                     t.transactionType,
                     :startDate,
                     :endDate,
@@ -27,7 +27,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
                 WHERE t.transactionType = :transactionType
                   AND t.date BETWEEN :startDate AND :endDate
             """)
-    TransactionRevenueDTO sumByTypeAndPeriod(
+    TransactionRevenueOutputDTO sumByTypeAndPeriod(
             @Param("transactionType") TransactionType transactionType,
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate
@@ -46,7 +46,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
                   AND t.branch = :branch
                   AND t.date BETWEEN :startDate AND :endDate
             """)
-    BranchTransactionRevenueDTO sumByTypeBranchAndPeriod(
+    BranchTransactionRevenueOutputDTO sumByTypeBranchAndPeriod(
             @Param("transactionType") TransactionType transactionType,
             @Param("branch") String branch,
             @Param("startDate") LocalDate startDate,
@@ -54,7 +54,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     );
 
     @Query("""
-                SELECT new br.project.financial.dtos.transaction.output.BranchAmountDTO(
+                SELECT new br.project.financial.dtos.transaction.output.BranchAmountOutputDTO(
                     t.branch,
                     SUM(t.amount)
                 )
@@ -63,12 +63,12 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
                 GROUP BY t.branch
                 ORDER BY SUM(t.amount) DESC
             """)
-    List<BranchAmountDTO> sumByTypeGroupedByBranchOrderedDesc(
+    List<BranchAmountOutputDTO> sumByTypeGroupedByBranchOrderedDesc(
             @Param("transactionType") TransactionType transactionType
     );
 
     @Query("""
-                SELECT new br.project.financial.dtos.transaction.output.BranchAmountDTO(
+                SELECT new br.project.financial.dtos.transaction.output.BranchAmountOutputDTO(
                     t.branch,
                     SUM(t.amount)
                 )
@@ -78,7 +78,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
                 GROUP BY t.branch
                 ORDER BY SUM(t.amount) DESC
             """)
-    List<BranchAmountDTO> findTop2BranchesByTransactionTypeAndDateBetween(
+    List<BranchAmountOutputDTO> findTop2BranchesByTransactionTypeAndDateBetween(
             @Param("transactionType") TransactionType transactionType,
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate

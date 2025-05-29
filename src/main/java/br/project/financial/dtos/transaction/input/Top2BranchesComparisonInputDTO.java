@@ -1,17 +1,21 @@
-package br.project.financial.dtos.transaction.output;
+package br.project.financial.dtos.transaction.input;
 
 import br.project.financial.enums.TransactionType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-public class TransactionRevenueDTO {
+public class Top2BranchesComparisonInputDTO {
+
     private TransactionType transactionType;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
-    private BigDecimal total;
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Top2BranchesComparisonDTO {
-    private List<BranchAmountDTO> topBranches;
+    private List<BranchAmountOutputDTO> topBranches;
     private BigDecimal difference;
 }

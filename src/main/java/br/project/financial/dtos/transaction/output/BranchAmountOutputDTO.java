@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class BranchAmountDTO {
+public class BranchAmountOutputDTO {
     private String branch;
     private BigDecimal amount;
 
-    public BranchAmountDTO(String branch, BigDecimal amount) {
+    public BranchAmountOutputDTO(String branch, BigDecimal amount) {
         this.branch = branch;
         this.amount = amount;
     }

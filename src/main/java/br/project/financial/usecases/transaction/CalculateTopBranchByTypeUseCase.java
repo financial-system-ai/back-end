@@ -1,6 +1,6 @@
 package br.project.financial.usecases.transaction;
 
-import br.project.financial.dtos.transaction.output.BranchAmountDTO;
+import br.project.financial.dtos.transaction.output.BranchAmountOutputDTO;
 import br.project.financial.enums.TransactionType;
 import br.project.financial.errors.ExceptionCode;
 import br.project.financial.errors.exceptions.BusinessRuleException;
@@ -21,7 +21,7 @@ public class CalculateTopBranchByTypeUseCase {
         this.repository = repository;
     }
 
-    public BranchAmountDTO execute(TransactionType transactionType) {
+    public BranchAmountOutputDTO execute(TransactionType transactionType) {
         if (transactionType == null) {
             throw new BusinessRuleException(
                     ExceptionCode.INVALID_TRANSACTION_TYPE,
@@ -29,7 +29,7 @@ public class CalculateTopBranchByTypeUseCase {
             );
         }
 
-        List<BranchAmountDTO> list = repository
+        List<BranchAmountOutputDTO> list = repository
                 .sumByTypeGroupedByBranchOrderedDesc(transactionType);
 
         if (list.isEmpty()) {
@@ -38,7 +38,7 @@ public class CalculateTopBranchByTypeUseCase {
             );
         }
 
-        BranchAmountDTO result = list.get(0);
+        BranchAmountOutputDTO result = list.get(0);
 
         if (result.getAmount() == null
                 || result.getAmount().compareTo(BigDecimal.ZERO) == 0

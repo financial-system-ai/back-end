@@ -1,7 +1,7 @@
 package br.project.financial.usecases.transaction;
 
 import br.project.financial.dtos.transaction.output.Top2BranchesComparisonDTO;
-import br.project.financial.dtos.transaction.output.BranchAmountDTO;
+import br.project.financial.dtos.transaction.output.BranchAmountOutputDTO;
 import br.project.financial.enums.TransactionType;
 import br.project.financial.errors.ExceptionCode;
 import br.project.financial.errors.exceptions.BusinessRuleException;
@@ -42,7 +42,7 @@ public class CalculateTop2BranchesComparisonUseCase {
             );
         }
 
-        List<BranchAmountDTO> top2 = repository
+        List<BranchAmountOutputDTO> top2 = repository
                 .findTop2BranchesByTransactionTypeAndDateBetween(
                         transactionType, startDate, endDate
                 );

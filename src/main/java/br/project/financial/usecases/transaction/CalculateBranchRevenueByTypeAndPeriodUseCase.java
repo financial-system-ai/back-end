@@ -1,6 +1,6 @@
 package br.project.financial.usecases.transaction;
 
-import br.project.financial.dtos.transaction.output.BranchTransactionRevenueDTO;
+import br.project.financial.dtos.transaction.output.BranchTransactionRevenueOutputDTO;
 import br.project.financial.enums.TransactionType;
 import br.project.financial.errors.ExceptionCode;
 import br.project.financial.errors.exceptions.BusinessRuleException;
@@ -21,7 +21,7 @@ public class CalculateBranchRevenueByTypeAndPeriodUseCase {
         this.repository = repository;
     }
 
-    public BranchTransactionRevenueDTO execute(
+    public BranchTransactionRevenueOutputDTO execute(
             TransactionType transactionType,
             String branch,
             LocalDate startDate,
@@ -41,7 +41,7 @@ public class CalculateBranchRevenueByTypeAndPeriodUseCase {
             );
         }
 
-        BranchTransactionRevenueDTO result =
+        BranchTransactionRevenueOutputDTO result =
                 repository.sumByTypeBranchAndPeriod(transactionType, branch, startDate, endDate);
 
         if (result == null

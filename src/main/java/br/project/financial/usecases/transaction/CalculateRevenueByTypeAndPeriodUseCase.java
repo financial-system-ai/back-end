@@ -1,6 +1,6 @@
 package br.project.financial.usecases.transaction;
 
-import br.project.financial.dtos.transaction.output.TransactionRevenueDTO;
+import br.project.financial.dtos.transaction.output.TransactionRevenueOutputDTO;
 import br.project.financial.enums.TransactionType;
 import br.project.financial.errors.ExceptionCode;
 import br.project.financial.errors.exceptions.BusinessRuleException;
@@ -21,7 +21,7 @@ public class CalculateRevenueByTypeAndPeriodUseCase {
         this.repository = repository;
     }
 
-    public TransactionRevenueDTO execute(
+    public TransactionRevenueOutputDTO execute(
             TransactionType transactionType,
             LocalDate startDate,
             LocalDate endDate
@@ -40,7 +40,7 @@ public class CalculateRevenueByTypeAndPeriodUseCase {
             );
         }
 
-        TransactionRevenueDTO result = repository.sumByTypeAndPeriod(transactionType, startDate, endDate);
+        TransactionRevenueOutputDTO result = repository.sumByTypeAndPeriod(transactionType, startDate, endDate);
 
         if (result == null || result.getTotal() == null || result.getTotal().compareTo(BigDecimal.ZERO) == 0) {
             throw new NoTransactionsFoundException(Map.of(

@@ -9,9 +9,8 @@ import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-public class BranchTransactionRevenueDTO {
+public class TransactionRevenueOutputDTO {
     private TransactionType transactionType;
-    private String branch;
     private LocalDate startDate;
     private LocalDate endDate;
     private BigDecimal total;
