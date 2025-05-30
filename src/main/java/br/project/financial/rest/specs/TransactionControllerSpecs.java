@@ -64,5 +64,5 @@ public interface TransactionControllerSpecs {
     @ApiResponseInvalidPeriod
     @ApiResponseNoTransactionsFound
     @GetMapping("/detailed")
-    ResponseEntity<List<TransactionDetailedOutputDTO>> getDetailedTransactions(TransactionDetailedInputDTO inputDTO);
+    ResponseEntity<List<TransactionDetailedDTO>> getDetailedTransactions(TransactionDetailedInputDTO inputDTO);
 }

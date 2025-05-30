@@ -2,18 +2,18 @@ package br.project.financial.dtos.transaction.input;
 
 import br.project.financial.enums.TransactionType;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class BranchTransactionRevenueInputDTO {
 
-    private TransactionType transactionType;
+    private TransactionType type;
 
     private String branch;
 

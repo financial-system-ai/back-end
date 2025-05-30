@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class TransactionDetailedOutputDTO {
+public class TransactionDetailedDTO {
     private Long id;
     private String transactionType;
     private String customer;
@@ -17,7 +17,7 @@ public class TransactionDetailedOutputDTO {
     private String branch;
     private LocalDate date;
 
-    public TransactionDetailedOutputDTO(
+    public TransactionDetailedDTO(
             Long id,
             String transactionType,
             String customer,

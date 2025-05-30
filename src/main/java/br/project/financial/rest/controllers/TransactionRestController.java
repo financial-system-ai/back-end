@@ -44,31 +44,31 @@ public class TransactionRestController implements TransactionControllerSpecs {
     @GetMapping
     public ResponseEntity<TransactionRevenueOutputDTO> getRevenueByTypeAndDate(
             @ModelAttribute TransactionRevenueByDateInputDTO inputDTO){
-        return ResponseEntity.ok(byDateUseCase.execute(inputDTO.getTransactionType(), inputDTO.getDate()));
+        return ResponseEntity.ok(byDateUseCase.execute(inputDTO.getType(), inputDTO.getDate()));
     }
 
             @GetMapping("/period")
-    public ResponseEntity<TransactionRevenueOutputDTO> getRevenueByTypeAndPeriod(TransactionRevenueByPeriodInputDTO inputDTO) {
-        return ResponseEntity.ok(byPeriodUseCase.execute(inputDTO.getTransactionType(), inputDTO.getStartDate(), inputDTO.getEndDate()));
+    public ResponseEntity<TransactionRevenueOutputDTO> getRevenueByTypeAndPeriod(@ModelAttribute TransactionRevenueByPeriodInputDTO inputDTO) {
+        return ResponseEntity.ok(byPeriodUseCase.execute(inputDTO.getType(), inputDTO.getStartDate(), inputDTO.getEndDate()));
     }
 
     @GetMapping("/branch")
-    public ResponseEntity<BranchTransactionRevenueOutputDTO> getRevenueByBranchTypeAndPeriod(BranchTransactionRevenueInputDTO inputDTO) {
-        return ResponseEntity.ok(byBranchUseCase.execute(inputDTO.getTransactionType(), inputDTO.getBranch(), inputDTO.getStartDate(), inputDTO.getEndDate()));
+    public ResponseEntity<BranchTransactionRevenueOutputDTO> getRevenueByBranchTypeAndPeriod(@ModelAttribute BranchTransactionRevenueInputDTO inputDTO) {
+        return ResponseEntity.ok(byBranchUseCase.execute(inputDTO.getType(), inputDTO.getBranch(), inputDTO.getStartDate(), inputDTO.getEndDate()));
     }
 
     @GetMapping("/branch/top")
-    public ResponseEntity<BranchAmountOutputDTO> getTopBranchByType(BranchAmountInputDTO inputDTO) {
-        return ResponseEntity.ok(topBranchUseCase.execute(inputDTO.getTransactionType()));
+    public ResponseEntity<BranchAmountOutputDTO> getTopBranchByType(@ModelAttribute BranchAmountInputDTO inputDTO) {
+        return ResponseEntity.ok(topBranchUseCase.execute(inputDTO.getType()));
     }
 
     @GetMapping("/comparison")
-    public ResponseEntity<Top2BranchesComparisonDTO> compareTop2Branches(Top2BranchesComparisonInputDTO inputDTO) {
-        return ResponseEntity.ok(comparisonUseCase.execute(inputDTO.getTransactionType(), inputDTO.getStartDate(), inputDTO.getEndDate()));
+    public ResponseEntity<Top2BranchesComparisonDTO> compareTop2Branches(@ModelAttribute Top2BranchesComparisonInputDTO inputDTO) {
+        return ResponseEntity.ok(comparisonUseCase.execute(inputDTO.getType(), inputDTO.getStartDate(), inputDTO.getEndDate()));
     }
 
     @GetMapping("/detailed")
-    public ResponseEntity<List<TransactionDetailedOutputDTO>> getDetailedTransactions(TransactionDetailedInputDTO inputDTO) {
+    public ResponseEntity<List<TransactionDetailedDTO>> getDetailedTransactions(@ModelAttribute TransactionDetailedInputDTO inputDTO) {
         return ResponseEntity.ok(detailedTransactionsUseCase.execute(inputDTO.getBranch(), inputDTO.getStartDate(), inputDTO.getEndDate()));
     }
 }

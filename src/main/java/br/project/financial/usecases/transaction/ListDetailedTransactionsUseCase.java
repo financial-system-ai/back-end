@@ -1,6 +1,6 @@
 package br.project.financial.usecases.transaction;
 
-import br.project.financial.dtos.transaction.output.TransactionDetailedOutputDTO;
+import br.project.financial.dtos.transaction.output.TransactionDetailedDTO;
 import br.project.financial.errors.ExceptionCode;
 import br.project.financial.errors.exceptions.BusinessRuleException;
 import br.project.financial.errors.exceptions.NoTransactionsFoundException;
@@ -26,7 +26,7 @@ public class ListDetailedTransactionsUseCase {
         this.mapper = mapper;
     }
 
-    public List<TransactionDetailedOutputDTO> execute(
+    public List<TransactionDetailedDTO> execute(
             String branch,
             LocalDate startDate,
             LocalDate endDate

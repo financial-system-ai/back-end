@@ -2,17 +2,17 @@ package br.project.financial.dtos.transaction.input;
 
 import br.project.financial.enums.TransactionType;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 public class TransactionRevenueByPeriodInputDTO {
-    private TransactionType transactionType;
+    private TransactionType type;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;

@@ -34,7 +34,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     );
 
     @Query("""
-                SELECT new br.project.financial.dtos.transaction.output.BranchTransactionRevenueDTO(
+                SELECT new br.project.financial.dtos.transaction.output.BranchTransactionRevenueOutputDTO(
                     t.transactionType,
                     t.branch,
                     :startDate,
@@ -54,7 +54,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     );
 
     @Query("""
-                SELECT new br.project.financial.dtos.transaction.output.BranchAmountOutputDTO(
+               SELECT new br.project.financial.dtos.transaction.output.BranchAmountOutputDTO(
                     t.branch,
                     SUM(t.amount)
                 )
